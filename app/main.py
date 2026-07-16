@@ -27,3 +27,7 @@ def root():
         "documentation": "/docs",
         "redoc": "/redoc",
     }
+
+@app.get("/")
+def home():
+    return {"message": "CI/CD Pipeline API is running"}
