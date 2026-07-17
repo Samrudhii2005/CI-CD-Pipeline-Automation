@@ -11,23 +11,14 @@ app = FastAPI(
     redoc_url="/redoc",
 )
 
-# Create database tables automatically when the application starts
 @app.on_event("startup")
 def startup():
     Base.metadata.create_all(bind=engine)
 
-# Include API routers
 app.include_router(projects.router)
-
-
-@app.get("/")
-def root():
-    return {
-        "message": "Welcome to the Cloud Deployment API",
-        "documentation": "/docs",
-        "redoc": "/redoc",
-    }
 
 @app.get("/")
 def home():
-    return {"message": "CI/CD Pipeline API is running"}
+    return {
+        "message": "CI/CD Pipeline API is running"
+    }
