@@ -24,5 +24,5 @@ app.include_router(auth.router)
 @app.get("/")
 def home():
     return {
-        "message": "CI/CD Pipeline API is running"
+        "message": "CI/CD Pipeline API is running - Version 2"
     }
