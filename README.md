@@ -22,7 +22,6 @@ This project demonstrates the implementation of a CI/CD pipeline using modern De
 
 \- Docker
 
-\- AWS
 
-\- Kubernetes (Learning Phase)
 
+Testing manual deployment experiment.
