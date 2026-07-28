@@ -67,3 +67,11 @@ jobs:
       - name: Health Check
         run: |
           curl --fail http://127.0.0.1:8000/health
+
+      - name: Simulate Automated Rollback
+  if: failure()
+  run: |
+    echo "Health check failed."
+    echo "Rolling back to previous stable version..."
+    echo "Stopping current deployment..."
+    echo "Previous stable version restored successfully."
