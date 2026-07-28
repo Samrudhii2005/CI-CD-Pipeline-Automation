@@ -33,7 +33,7 @@ from fastapi.responses import RedirectResponse
 def home():
     return RedirectResponse(url="/dashboard")
 
-@app.get("/healthzz")
+@app.get("/health")
 def health_check():
     return {
         "status": "healthy"
