@@ -16,12 +16,12 @@ jobs:
       mysql:
         image: mysql:8.0
         env:
-          MYSQL_ROOT_PASSWORD: giddi@2005
+        MYSQL_ROOT_PASSWORD: ${{ secrets.MYSQL_ROOT_PASSWORD }}
           MYSQL_DATABASE: cloud_deployment_db
         ports:
           - 3306:3306
         options: >-
-          --health-cmd="mysqladmin ping -h localhost -pgiddi@2005"
+          --health-cmd="mysqladmin ping -h localhost -p${{ secrets.MYSQL_ROOT_PASSWORD }}"
           --health-interval=10s
           --health-timeout=5s
           --health-retries=5
@@ -30,7 +30,7 @@ jobs:
       DB_HOST: 127.0.0.1
       DB_PORT: 3306
       DB_USER: root
-      DB_PASSWORD: giddi@2005
+      DB_PASSWORD: ${{ secrets.MYSQL_ROOT_PASSWORD }}
       DB_NAME: cloud_deployment_db
 
     steps:
