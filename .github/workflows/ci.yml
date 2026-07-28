@@ -56,3 +56,14 @@ jobs:
           PYTHONPATH: .
         run: |
           pytest
+
+      # 👇 NEW STEP
+      - name: Start FastAPI Application
+        run: |
+          uvicorn app.main:app --host 127.0.0.1 --port 8000 &
+          sleep 10
+
+      # 👇 NEW STEP
+      - name: Health Check
+        run: |
+          curl --fail http://127.0.0.1:8000/health
