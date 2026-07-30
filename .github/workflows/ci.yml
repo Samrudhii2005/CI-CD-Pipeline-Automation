@@ -51,11 +51,11 @@ jobs:
         run: |
           python create_tables.py
 
-      - name: Run Tests
+      - name: Run Tests with Coverage
         env:
           PYTHONPATH: .
         run: |
-          pytest
+         pytest --cov=. --cov-report=xml
 
       # 👇 NEW STEP
       - name: Start FastAPI Application
