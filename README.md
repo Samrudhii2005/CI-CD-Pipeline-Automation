@@ -25,3 +25,4 @@ This project demonstrates the implementation of a CI/CD pipeline using modern De
 
 
 Testing manual deployment experiment.
+Temporary commit to trigger CI workflow.
