@@ -78,3 +78,12 @@ jobs:
           echo "Restoring previous stable version..."
           echo "Rollback completed successfully."
           echo "======================================"
+     
+      - name: SonarQube Scan
+        uses: SonarSource/sonarqube-scan-action@v5
+        env:
+          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+        with:
+          args: >
+            -Dsonar.projectKey=Samrudhii2005_CI-CD-Pipeline-Automation
+            -Dsonar.organization=samrudhii2005
