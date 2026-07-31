@@ -87,3 +87,10 @@ jobs:
           args: >
             -Dsonar.projectKey=Samrudhii2005_CI-CD-Pipeline-Automation
             -Dsonar.organization=samrudhii2005
+
+      - name: Trigger Render Deployment
+        if: ${{ success() }}
+        run: |
+          echo "Triggering deployment on Render..."
+          curl -X POST "${{ secrets.RENDER_DEPLOY_HOOK }}"
+          echo "Deployment request sent successfully!"
