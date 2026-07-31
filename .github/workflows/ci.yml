@@ -53,9 +53,10 @@ jobs:
 
       - name: Run Tests with Coverage
         env:
-          PYTHONPATH: .
+           PYTHONPATH: .
         run: |
-         pytest --cov=. --cov-report=xml
+           pytest --cov=. --cov-report=xml
+           echo "TESTS_PASSED=true" >> $GITHUB_ENV
 
       # 👇 NEW STEP
       - name: Start FastAPI Application
@@ -87,6 +88,20 @@ jobs:
           args: >
             -Dsonar.projectKey=Samrudhii2005_CI-CD-Pipeline-Automation
             -Dsonar.organization=samrudhii2005
+
+      - name: Check SonarCloud Quality Gate
+        id: quality_gate
+        uses: SonarSource/sonarqube-quality-gate-action@master
+        timeout-minutes: 5
+        env:
+          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}    
+
+      - name: Run Pipeline Deployment Confidence Framework
+        env:
+          TESTS_PASSED: "true"
+          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+        run: |
+          python scripts/deployment_confidence.py 
 
       - name: Trigger Render Deployment
         if: ${{ success() }}

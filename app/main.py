@@ -6,6 +6,7 @@ from app.routers import auth
 
 from app.routers import projects, auth, dashboard
 from fastapi.staticfiles import StaticFiles
+from app.routers import confidence
 
 app = FastAPI(
     title="Cloud Deployment API",
@@ -26,6 +27,7 @@ def startup():
 app.include_router(projects.router)
 app.include_router(auth.router)
 app.include_router(dashboard.router)
+app.include_router(confidence.router)
 
 from fastapi.responses import RedirectResponse
 
