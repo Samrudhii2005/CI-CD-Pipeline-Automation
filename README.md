@@ -2,6 +2,8 @@
 
 An empirical implementation of a **CI/CD pipeline** for a FastAPI-based cloud application using **GitHub Actions**, **SonarQube**, and **Render**. This project demonstrates automated testing, code quality analysis, deployment validation, secure secret management, and deployment automation following modern DevOps practices.
 
+Demo Deploy 
+
 ## ✨ Features
 
 - ⚡ FastAPI REST API
